@@ -513,7 +513,7 @@ def webhook():
             #return 'Hello ' + request.args['name']
             return make_response(jsonify({'fulfillmentText': "",
              "fulfillmentMessages":[
-                {"platform":"PLATFORM_UNSPECIFIED","text":{"text":["thanks #name.name for Visiting Us..We will get back to you on #email.email or #mobile.mobile ..!🙏🙏🙂"]},"message":"text"},
+                {"platform":"PLATFORM_UNSPECIFIED","text":{"text":["thanks for Visiting Us..We will get back to you..!🙏🙏🙂"]},"message":"text"},
                 {"platform":"FACEBOOK","text":{"text":["🙏Thanks For Visiting Us..We will get back to you..!🙏🙏🙂"]},"message":"text"},
                 ]
             }))

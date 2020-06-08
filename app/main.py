@@ -91,7 +91,10 @@ def webhook():
                 ]}))
         
     elif action == "uemail":
-            print(req.get('queryResult').get('queryText'))
+            email = req.get('queryResult').get('queryText')
+            db(email)
+            #print(req.get('queryResult').get('queryText'))
+            
            #if 'username' in request.args:
             #return 'Hello ' + request.args['name']
             return make_response(jsonify({'fulfillmentText': "👌🏻Nice..!Follow wwwwwww1 more step Enter Your Mobile Number?"}))
@@ -519,6 +522,22 @@ def webhook():
                 ]
             }))
 
+    def db(email):
+        con = sqlite3.connect("dialog.db")
+        print("Database opened successfully")
+
+        con.execute(
+        "create table Employees (id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT UNIQUE NOT NULL)")
+
+        print("Table created successfully")
+
+        
+        cur = con.cursor()
+        cur.execute("INSERT into Employees (email) values (?)", (email))
+        con.commit()
+        con.close()
+
+        
 
 @app.route("/") 
 def home_view(): 

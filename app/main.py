@@ -22,7 +22,7 @@ def webhook():
     #matching action value
 
     if action == "hi":
-            return make_response(jsonify({'fulfillmentText': "I have a headphones",
+            return make_response(jsonify({'fulfillmentText': "I h've headphones",
                  "fulfillmentMessages":[
                   {"platform":"ACTIONS_ON_GOOGLE","simpleResponses":{"simpleResponses":[{"textToSpeech":"Hi! ","ssml":"","displayText":""}]},"message":"simpleResponses"},
       {"platform":"ACTIONS_ON_GOOGLE","suggestions":{"suggestions":[{"title":"test"},{"title":"ing"},{"title":"this"}]},"message":"suggestions"},

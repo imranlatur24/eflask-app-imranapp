@@ -91,6 +91,7 @@ def webhook():
                 ]}))
         
     elif action == "uemail":
+            print(req.get('queryResult').get('queryText'))
            #if 'username' in request.args:
             #return 'Hello ' + request.args['name']
             return make_response(jsonify({'fulfillmentText': "👌🏻Nice..!Follow wwwwwww1 more step Enter Your Mobile Number?"}))
@@ -517,7 +518,8 @@ def webhook():
                 {"platform":"FACEBOOK","text":{"text":["🙏Thanks For Visiting Us..We will get back to you..!🙏🙏🙂"]},"message":"text"},
                 ]
             }))
-        
+
+
 @app.route("/") 
 def home_view(): 
 		return "<h1>Welcome 2 Imran Server</h1>"

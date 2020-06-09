@@ -110,7 +110,7 @@ def webhook():
            
         
             print("email successfully inserted..",email)
-            return make_response(jsonify({'fulfillmentText': "👌🏻Nice..!Follow wwwwwww1 more step Enter Your Mobile Number?"}))
+            return make_response(jsonify({'fulfillmentText': "👌🏻Nice..!Follow wwwwwwww wwmore step Enter Your Mobile Number?"}))
         
     elif action == "uphone":
            #if 'username' in request.args:

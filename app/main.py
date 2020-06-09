@@ -7,19 +7,22 @@ app = Flask(__name__)
 @app.route('/webhook', methods=['POST'])
 def webhook():
     req = request.get_json(silent=True, force=True)
-    try:
-       action = req.get('queryResult').get('action')
-       cityname = req.get('queryResult').get('queryText')
-       not_yet = req.get('queryResult').get('queryText')
+    #try:
+    action = req.get('queryResult').get('action')
+    cityname = req.get('queryResult').get('queryText')
+    not_yet = req.get('queryResult').get('queryText')
        
        #name = req.get('parameters').get('name.original')
-       print('this is name of user '+not_yet)
+    print('this is name of user '+not_yet)
        
-    except AttributeError:
-        return 'errro by json'
+    #except AttributeError:
+    #    return 'errro by json'
     print(req)
     print("Hallo world")
     #matching action value
+
+     
+       
 
     if action == "hi":
             return make_response(jsonify({'fulfillmentText': "I h've headphones",
@@ -92,7 +95,23 @@ def webhook():
         
     elif action == "uemail":
             email = req.get('queryResult').get('queryText')
-            db(email)
+        
+
+            con = sqlite3.connect("dialog.db")
+            print("Database opened successfully")
+
+            #con.execute(
+            #"create table Employees2 (id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT UNIQUE NOT NULL)")
+
+            #print("Table created successfully")
+
+        
+            cur = con.cursor()
+            cur.execute("INSERT into Employees (email) values (?)", (email))
+            con.commit()
+            con.close()
+            print("email successfully inserted....................................................................................................")
+            
             #print(req.get('queryResult').get('queryText'))
             
            #if 'username' in request.args:
@@ -522,20 +541,7 @@ def webhook():
                 ]
             }))
 
-    def db(email):
-        con = sqlite3.connect("dialog.db")
-        print("Database opened successfully")
-
-        con.execute(
-        "create table Employees (id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT UNIQUE NOT NULL)")
-
-        print("Table created successfully")
-
-        
-        cur = con.cursor()
-        cur.execute("INSERT into Employees (email) values (?)", (email))
-        con.commit()
-        con.close()
+   
 
         
 

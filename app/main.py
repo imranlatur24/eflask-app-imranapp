@@ -108,11 +108,11 @@ def webhook():
         
             cur = con.cursor()
             #cur.execute("INSERT into Employees (email) values (?)", (email))
-            cur.execute("insert into Employees (email) values (?);",(email))
+            cur.execute("insert into Employees (email) values (?)",(email,))
 
             con.commit()
             con.close()
-            print("email successfully inserted....................................................................................................")
+            print("email inserted...............................",email)
             
             #print(req.get('queryResult').get('queryText'))
             

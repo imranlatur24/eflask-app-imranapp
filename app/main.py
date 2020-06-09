@@ -112,7 +112,7 @@ def webhook():
 
             con.commit()
             con.close()
-            print("email inserted...............................",email)
+            print("email inserted..",email)
             
             #print(req.get('queryResult').get('queryText'))
             

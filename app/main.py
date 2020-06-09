@@ -98,7 +98,7 @@ def webhook():
         
 
             con = sqlite3.connect("dialog.db")
-            print("Database opened successfully")
+            print("Database connected successfully")
 
             #con.execute(
             #"create table Employees2 (id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT UNIQUE NOT NULL)")
@@ -107,7 +107,9 @@ def webhook():
 
         
             cur = con.cursor()
-            cur.execute("INSERT into Employees (email) values (?)", (email))
+            #cur.execute("INSERT into Employees (email) values (?)", (email))
+            cur.execute("insert into Employees (email) values (?);",(email))
+
             con.commit()
             con.close()
             print("email successfully inserted....................................................................................................")

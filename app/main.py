@@ -11,7 +11,6 @@ def webhook():
     #try:
     action = req.get('queryResult').get('action')
     not_yet = req.get('queryResult').get('queryText')
-    cityname = req.get('queryResult').get('queryText')
 
     #name = req.get('parameters').get('name.original')
     print('this is name of user '+not_yet)

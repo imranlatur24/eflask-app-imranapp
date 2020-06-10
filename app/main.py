@@ -11,6 +11,7 @@ def webhook():
     #try:
     action = req.get('queryResult').get('action')
     not_yet = req.get('queryResult').get('queryText')
+    cityname = req.get('queryResult').get('queryText')
 
        #name = req.get('parameters').get('name.original')
     print('this is name of user '+not_yet)
@@ -58,7 +59,6 @@ def webhook():
     elif action == "city":
            #if 'username'  request.args:
             #return 'Hello ' + request.args['name']
-            cityname = req.get('queryResult').get('queryText')
 
             api_address='https://api.openweathermap.org/data/2.5/weather?appid=3e90723e72e3e77055f8c10dccb120f8&q='
             city = cityname

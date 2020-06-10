@@ -21,7 +21,7 @@ def webhook():
     print("Hallo world")
     #matching action value
 
-     
+
        
 
     if action == "hi":
@@ -55,7 +55,15 @@ def webhook():
     if action == "notyet":
            #if 'username'  request.args:
             #return 'Hello ' + request.args['name']
-            return make_response(jsonify({'fulfillmentText': "🙂Okay..!Follow the 3 more steps ..Enter Your Name Please ?"}))
+            api_address='https://api.openweathermap.org/data/2.5/weather?appid=3e90723e72e3e77055f8c10dccb120f8&q='
+            # city = input('City Name :')
+            city = cityname
+            url = api_address + city
+            json_data = requests.get(url).json()
+            formatted_data = json_data['main']['temp']
+            print(formatted_data)
+            return formatted_data
+            #return make_response(jsonify({'fulfillmentText': "🙂Okay..!Follow the 3 more steps ..Enter Your Name Please ?"}))
 
     elif action == "uname":
            #if 'username' in request.args:

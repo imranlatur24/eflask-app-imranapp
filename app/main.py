@@ -19,7 +19,6 @@ def webhook():
     #except AttributeError:
     #    return 'errro by json'
     print(req)
-    print("Hallo world")
     #matching action value
 
     mydb = mysql.connector.connect(
@@ -102,16 +101,16 @@ def webhook():
     elif action == "uemail":
             email = req.get('queryResult').get('queryText')
            
-            mycursor = mydb.cursor()
+            #mycursor = mydb.cursor()
 
-            sql =("INSERT INTO customers(email) VALUES (%s)")
-            val = (email,)
-            mycursor.execute(sql, val)
+            #sql =("INSERT INTO customers(email) VALUES (%s)")
+            #val = (email,)
+            #mycursor.execute(sql, val)
 
-            mydb.commit()
+            #mydb.commit()
 
-            print(mycursor.rowcount, "record inserted.")
-            print("connected db:")
+            #print(mycursor.rowcount, "record inserted.")
+            #print("connected db:")
 
             print("email successfully inserted..",email)
             return make_response(jsonify({'fulfillmentText': "👌🏻Nice..!Follow wwwwwww1 more step Enter Your Mobile Number?"}))

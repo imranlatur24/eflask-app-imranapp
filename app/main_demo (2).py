@@ -1,7 +1,7 @@
 from flask import *
 import sqlite3
 import json
-import mysql.connector
+import requests
 
 app = Flask(__name__)
 
@@ -10,23 +10,16 @@ def webhook():
     req = request.get_json(silent=True, force=True)
     #try:
     action = req.get('queryResult').get('action')
-    cityname = req.get('queryResult').get('queryText')
     not_yet = req.get('queryResult').get('queryText')
-       
-       #name = req.get('parameters').get('name.original')
+
+    #name = req.get('parameters').get('name.original')
     print('this is name of user '+not_yet)
        
     #except AttributeError:
     #    return 'errro by json'
     print(req)
-    #matching action value
-
-    mydb = mysql.connector.connect(
-        host="127.0.0.1",
-        user="root",
-        password="",
-        db="chat_db"
-        )
+    print("Hallo world")
+    #matching action valu
        
 
     if action == "hi":
@@ -60,6 +53,7 @@ def webhook():
     if action == "notyet":
            #if 'username'  request.args:
             #return 'Hello ' + request.args['name']
+           
             return make_response(jsonify({'fulfillmentText': "🙂Okay..!Follow the 3 more steps ..Enter Your Name Please ?"}))
 
     elif action == "uname":
@@ -68,6 +62,8 @@ def webhook():
         
             return make_response(jsonify({'fulfillmentText': "👍Good..! "+not_yet+" Follow 2 more steps Enter Email Id Please ?"}))
 
+
+    
     elif action == "errorresponse":
            #if 'username' in request.args:
             #return 'Hello ' + request.args['name']
@@ -100,18 +96,16 @@ def webhook():
         
     elif action == "uemail":
             email = req.get('queryResult').get('queryText')
-           
-            #mycursor = mydb.cursor()
-
-            #sql =("INSERT INTO customers(email) VALUES (%s)")
-            #val = (email,)
-            #mycursor.execute(sql, val)
-
-            #mydb.commit()
-
-            #print(mycursor.rowcount, "record inserted.")
-            #print("connected db:")
-
+            con = sqlite3.connect("dialog.db")
+            print("Database connected successfully")
+            #con.execute(
+            #"create table Employees2 (id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT UNIQUE NOT NULL)")
+            #print("Table created successfully")
+            cur = con.cursor()
+            #cur.execute("INSERT into Employees (email) values (?)", (email))
+            cur.execute("insert into Employees (email) values (?)",(email,))
+            con.commit()
+            con.close()
             print("email successfully inserted..",email)
             return make_response(jsonify({'fulfillmentText': "👌🏻Nice..!Follow wwwwwww1 more step Enter Your Mobile Number?"}))
         

@@ -18,20 +18,7 @@ def webhook():
     #    return 'errro by json'
     print(req)
     print("Hallo world")
-    #matching action value
-
-def getweather(cityname):
-    api_address='https://api.openweathermap.org/data/2.5/weather?appid=3e90723e72e3e77055f8c10dccb120f8&q='
-                # city = input('City Name :')
-    city = cityname
-    print("city :",city)
-    url = api_address + city
-    print("url :",url)
-    json_data = requests.get(url).json()
-    print("json_data :",json_data)
-    formatted_data = json_data['main']['temp']
-    print("formatted_data",formatted_data)
-    return formatted_data
+    #matching action valu
        
 
     if action == "hi":

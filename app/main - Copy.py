@@ -1,7 +1,6 @@
 from flask import *
 import sqlite3
 import json
-import mysql.connector
 
 app = Flask(__name__)
 
@@ -96,23 +95,16 @@ def webhook():
         
     elif action == "uemail":
             email = req.get('queryResult').get('queryText')
-            mydb = mysql.connector.connect(
-            host="127.0.0.1",
-            user="root",
-            password="",
-            db="chat_db"
-            )
-            mycursor = mydb.cursor()
-
-            sql =("INSERT INTO customers(email) VALUES (%s)")
-            val = (email,)
-            mycursor.execute(sql, val)
-
-            mydb.commit()
-
-            print(mycursor.rowcount, "record inserted.")
-            print("connected db:")
-
+            con = sqlite3.connect("dialog.db")
+            print("Database connected successfully")
+            #con.execute(
+            #"create table Employees2 (id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT UNIQUE NOT NULL)")
+            #print("Table created successfully")
+            cur = con.cursor()
+            #cur.execute("INSERT into Employees (email) values (?)", (email))
+            cur.execute("insert into Employees (email) values (?)",(email,))
+            con.commit()
+            con.close()
             print("email successfully inserted..",email)
             return make_response(jsonify({'fulfillmentText': "👌🏻Nice..!Follow wwwwwww1 more step Enter Your Mobile Number?"}))
         

@@ -23,10 +23,10 @@ def webhook():
     #matching action value
 
     mydb = mysql.connector.connect(
-        host="localhost",
-        user="id14013524_tb",
+        host="127.0.0.1",
+        user="root",
         password="",
-        db="id14013524_test"
+        db="chat_db"
         )
        
 
@@ -104,7 +104,7 @@ def webhook():
            
             mycursor = mydb.cursor()
 
-            sql =("INSERT INTO users(email) VALUES (%s)")
+            sql =("INSERT INTO customers(email) VALUES (%s)")
             val = (email,)
             mycursor.execute(sql, val)
 

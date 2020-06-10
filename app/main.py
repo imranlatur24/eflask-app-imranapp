@@ -88,7 +88,7 @@ def getweather(cityname):
             print("json_data :",json_data)
             formatted_data = json_data['main']['temp']
             print("you city max temp is :",formatted_data)
-            return formatted_data
+            return make_response(jsonify({'fulfillmentText': formatted_data}))
 
     elif action == "errorresponse":
            #if 'username' in request.args:

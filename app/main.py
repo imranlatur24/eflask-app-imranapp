@@ -67,15 +67,16 @@ def webhook():
     elif action == "city":
            #if 'username' in request.args:
             #return 'Hello ' + request.args['name']
-                cityname = req.get('queryResult').get('queryText')
+            cityname = req.get('queryResult').get('queryText')
+            def getweather(cityname):
                 api_address='https://api.openweathermap.org/data/2.5/weather?appid=3e90723e72e3e77055f8c10dccb120f8&q='
-            # city = input('City Name :')
+                # city = input('City Name :')
                 city = cityname
                 url = api_address + city
                 json_data = requests.get(url).json()
                 formatted_data = json_data['main']['temp']
                 print(formatted_data)
-                return formatted_data
+            return formatted_data
 
     elif action == "errorresponse":
            #if 'username' in request.args:

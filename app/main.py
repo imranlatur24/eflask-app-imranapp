@@ -1,6 +1,7 @@
 from flask import *
 import sqlite3
 import json
+import requests
 
 app = Flask(__name__)
 
@@ -54,6 +55,21 @@ def webhook():
             #return 'Hello ' + request.args['name']
            
             return make_response(jsonify({'fulfillmentText': "🙂Okay..!Follow the 3 more steps ..Enter Your Name Please ?"}))
+    elif action == "city":
+           #if 'username'  request.args:
+            #return 'Hello ' + request.args['name']
+            cityname = req.get('queryResult').get('queryText')
+
+            api_address='https://api.openweathermap.org/data/2.5/weather?appid=3e90723e72e3e77055f8c10dccb120f8&q='
+            city = cityname
+            print("city :",city)
+            url = api_address + city
+            print("url :",url)
+            json_data = requests.get(url).json()
+            print("json_data :",json_data)
+            formatted_data = json_data['main']['temp']
+            print("you city temp is :",formatted_data)
+            return make_response(jsonify({'fulfillmentText': formatted_data}))
 
     elif action == "uname":
            #if 'username' in request.args:

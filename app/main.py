@@ -29,10 +29,7 @@ def webhook():
       {"platform":"ACTIONS_ON_GOOGLE","suggestions":{"suggestions":[{"title":"test"},{"title":"ing"},{"title":"this"}]},"message":"suggestions"},
       #{"platform":"PLATFORM_UNSPECIFIED","text":{"text":["🙏🙏Hello! I’m Haia and I’m a robot agent 🤖. Welcome to Carnival Resort🏨"]},"message":"text"},
       #{"platform":"PLATFORM_UNSPECIFIED","quickReplies":{"quickReplies":["😊Not Yet","Yeah😎"],"title":"Are you already a client?😎"},"message":""},
-      {"platform":"PLATFORM_UNSPECIFIED","card":{
-  "title": "Card Title",
-  "subtitle":"Subtitle Here",
-  "imageUri": "https://stock.rtl.lu/rtl/800/rtl2008.lu/nt/p/2020/04/09/16/fdfbf19dc86cb2ef05908e9e83885f97.png",
+      {"platform":"PLATFORM_UNSPECIFIED","card":{ "title": "Card Title", "subtitle":"Subtitle Here","imageUri": "https://stock.rtl.lu/rtl/800/rtl2008.lu/nt/p/2020/04/09/16/fdfbf19dc86cb2ef05908e9e83885f97.png",
   "buttons":[
   {
   "text":"Provience Data",
@@ -47,7 +44,23 @@ def webhook():
   "postback":"news-updates-int"
   }
   ]
-  },"message":""},
+  },"card":{ "title": "Card Title", "subtitle":"Subtitle Here","imageUri": "https://stock.rtl.lu/rtl/800/rtl2008.lu/nt/p/2020/04/09/16/fdfbf19dc86cb2ef05908e9e83885f97.png",
+  "buttons":[
+  {
+  "text":"Provience Data",
+  "postback":"province data int"
+  },
+  {
+  "text":"Button 2",
+  "postback":"button-2-int"
+  },
+  {
+  "text":"News and Updates",
+  "postback":"news-updates-int"
+  }
+  ]
+  }
+       "message":""},
       {"platform":"FACEBOOK","text":{"text":["🙏🙏Hello! I’m Haia and I’m a robot agent 🤖. Welcome to Carnival Resort🏨"]},"message":"text"},
       {"platform":"FACEBOOK","quickReplies":{"quickReplies":["😊Not Yet","Yeah😎"],"title":"Are you already a client?😎"},"message":""},
       {"platform":"SLACK","quickReplies":{"quickReplies":["test","ing","this"],"title":""},"message":"quickReplies"},

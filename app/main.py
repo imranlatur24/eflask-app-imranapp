@@ -113,6 +113,7 @@ def webhook():
         
     elif action == "uemail":
             email = req.get('queryResult').get('queryText')
+            print('email id is :',email)
             con = sqlite3.connect("dialog.db")
             print("Database connected successfully")
             #con.execute(
